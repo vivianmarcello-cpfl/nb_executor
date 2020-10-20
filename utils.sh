@@ -131,26 +131,19 @@ function execute_notebook() {
     fi
 
     if [[ -z "${GPU_TYPE}" ]]; then
-        gcloud compute instances create "${INSTANCE_NAME}" \
-                --zone="${ZONE}" \
-                --image-family="${IMAGE_FAMILY}" \
-                --image-project=deeplearning-platform-release \
-                --maintenance-policy=TERMINATE \
+        gcloud alpha notebooks instances create "${INSTANCE_NAME}" \
+                --location="${ZONE}" \
+                --vm-image-family="${IMAGE_FAMILY}" \
+                --vm-image-project=deeplearning-platform-release \
                 --machine-type="${INSTANCE_TYPE}" \
-                --boot-disk-size=200GB \
-                --scopes=https://www.googleapis.com/auth/cloud-platform \
                 --metadata="${META_DATA}" \
                 --quiet
     else
-        gcloud compute instances create "${INSTANCE_NAME}" \
-                --zone="${ZONE}" \
-                --image-family="${IMAGE_FAMILY}" \
-                --image-project=deeplearning-platform-release \
-                --maintenance-policy=TERMINATE \
-                --accelerator="type=nvidia-tesla-${GPU_TYPE},count=${GPU_COUNT}" \
+        gcloud alpha notebooks instances create "${INSTANCE_NAME}" \
+                --location="${ZONE}" \
+                --vm-image-family="${IMAGE_FAMILY}" \
+                --vm-image-project=deeplearning-platform-release \
                 --machine-type="${INSTANCE_TYPE}" \
-                --boot-disk-size=200GB \
-                --scopes=https://www.googleapis.com/auth/cloud-platform \
                 --metadata="${META_DATA}" \
                 --quiet
     fi
