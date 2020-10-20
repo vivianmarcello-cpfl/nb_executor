@@ -22,7 +22,7 @@ function execute_notebook() {
     local INPUT_NOTEBOOK=""
     local GPU_TYPE=""
     local GPU_COUNT=1
-    local INSTANCE_TYPE="n1-standard-8"
+    local INSTANCE_TYPE="n1-standard-4"
     local GCS_LOCATION=""
     local BUILD_ID=$(date +%s%5N)
     local CUSTOM_META_DATA=""
