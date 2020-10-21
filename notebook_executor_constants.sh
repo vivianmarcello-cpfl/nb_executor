@@ -46,9 +46,9 @@ if [[ "${PAPERMILL_EXIT_CODE}" -ne 0 ]]; then
   echo "Unable to execute notebook. Exit code: ${PAPERMILL_EXIT_CODE}"
   touch "${TEMPORARY_NOTEBOOK_FOLDER}/FAILED"
   
-	# For backward compitability.
-	cp "${TEMPORARY_NOTEBOOK_PATH}" "${LEGACY_NOTEBOOK_PATH}"
-	gsutil rsync -r "${TEMPORARY_NOTEBOOK_FOLDER}" "${OUTPUT_NOTEBOOK_GCS_FOLDER}"
+# For backward compitability.
+cp "${TEMPORARY_NOTEBOOK_PATH}" "${LEGACY_NOTEBOOK_PATH}"
+gsutil rsync -r "${TEMPORARY_NOTEBOOK_FOLDER}" "${OUTPUT_NOTEBOOK_GCS_FOLDER}"
 fi
 
 
