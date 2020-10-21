@@ -44,15 +44,12 @@ echo "Papermill exit code is: ${PAPERMILL_EXIT_CODE}"
 if [[ "${PAPERMILL_EXIT_CODE}" -ne 0 ]]; then
   echo "Unable to execute notebook. Exit code: ${PAPERMILL_EXIT_CODE}"
   touch "${TEMPORARY_NOTEBOOK_FOLDER}/FAILED"
-else
-  cd "${TEMPORARY_NOTEBOOK_FOLDER}"
-  jupyter nbconvert "${TEMPORARY_NOTEBOOK_PATH}"
-  jupyter nbconvert "${TEMPORARY_NOTEBOOK_PATH}" --output "${OUTPUT_NOTEBOOK_CLEAN_NAME}" --TemplateExporter.exclude_input=True
+  # For backward compitability.
+  cp "${TEMPORARY_NOTEBOOK_PATH}" "${LEGACY_NOTEBOOK_PATH}"
+  gsutil rsync -r "${TEMPORARY_NOTEBOOK_FOLDER}" "${OUTPUT_NOTEBOOK_GCS_FOLDER}"
 fi
 
-# For backward compitability.
-cp "${TEMPORARY_NOTEBOOK_PATH}" "${LEGACY_NOTEBOOK_PATH}"
-gsutil rsync -r "${TEMPORARY_NOTEBOOK_FOLDER}" "${OUTPUT_NOTEBOOK_GCS_FOLDER}"
+
 
 readonly INSTANCE_NAME=$(curl http://metadata.google.internal/computeMetadata/v1/instance/name -H "Metadata-Flavor: Google")
 INSTANCE_ZONE="/"$(curl http://metadata.google.internal/computeMetadata/v1/instance/zone -H "Metadata-Flavor: Google")
