@@ -11,10 +11,10 @@ fi
 
 if [[ ! -z $(command -v conda) ]]; then
   source /opt/anaconda3/bin/activate base
-  sudo /opt/anaconda3/bin/pip install -U papermill==1.0.1
+  sudo /opt/anaconda3/bin/pip install -U papermill==2.2.2
 fi
 
-pip install -U papermill>=1.0.1
+pip install -U papermill>=2.2.2
 pip install pandasql
 pip install curl 
 
