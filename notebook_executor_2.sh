@@ -8,10 +8,8 @@ if lspci -vnn | grep NVIDIA > /dev/null 2>&1; then
   fi
 fi
 
-if [[ ! -z $(command -v conda) ]]; then
-  pip install -U papermill>=1.0.1
-fi
 
+pip install -U papermill>=1.0.1
 pip install pandasql
 pip install curl 
 
