@@ -9,6 +9,11 @@ if lspci -vnn | grep NVIDIA > /dev/null 2>&1; then
 fi
 
 
+if [[ ! -z $(command -v conda) ]]; then
+  source /opt/anaconda3/bin/activate base
+  sudo /opt/anaconda3/bin/pip install -U papermill==1.0.1
+fi
+
 pip install -U papermill>=1.0.1
 pip install pandasql
 pip install curl 
