@@ -44,15 +44,10 @@ PAPERMILL_RESULTS=$?
 echo "Papermill exit code is: ${PAPERMILL_EXIT_CODE}"
 
 
-file="/tmp/test.txt"
-
-
 if [[ "${PAPERMILL_EXIT_CODE}" -ne 0 ]]; then
   echo "Unable to execute notebook. Exit code: ${PAPERMILL_EXIT_CODE}"
-  file = "${TEMPORARY_NOTEBOOK_FOLDER}/FAILED.txt" 
-  echo "${PAPERMILL_RESULTS}" > ${file}
-  echo "${PAPERMILL_EXIT_CODE}" >> ${file}
-  cat  ${file}
+  file="${TEMPORARY_NOTEBOOK_FOLDER}/FAILED.txt" 
+  echo ${PAPERMILL_RESULTS} >${file}
   # For backward compitability.
   cp "${TEMPORARY_NOTEBOOK_PATH}" "${LEGACY_NOTEBOOK_PATH}"
   gsutil rsync -r "${TEMPORARY_NOTEBOOK_FOLDER}" "${OUTPUT_NOTEBOOK_GCS_FOLDER}"
