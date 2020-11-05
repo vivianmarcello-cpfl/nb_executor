@@ -8,6 +8,8 @@ if lspci -vnn | grep NVIDIA > /dev/null 2>&1; then
   fi
 fi
 
+conda create --name environment
+conda activate environment
 
 if [[ ! -z $(command -v conda) ]]; then
   source /opt/anaconda3/bin/activate base
@@ -17,6 +19,7 @@ fi
 pip install -U papermill>=2.2.2
 pip install pandasql
 pip install curl 
+
 
 readonly INPUT_NOTEBOOK_GCS_FILE=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/input_notebook -H "Metadata-Flavor: Google")
 readonly OUTPUT_NOTEBOOK_GCS_FOLDER=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/output_notebook -H "Metadata-Flavor: Google")
@@ -44,7 +47,7 @@ else
   PAPERMILL_RESULTS=$?
 fi
 
-
+conda deactivate
 
 echo "Papermill exit code is: ${PAPERMILL_EXIT_CODE}"
 
