@@ -8,18 +8,18 @@ if lspci -vnn | grep NVIDIA > /dev/null 2>&1; then
   fi
 fi
 
+if [[ ! -z $(command -v conda) ]]; then
+  source /opt/conda/bin/activate base
+  sudo /opt/conda/bin/pip install -U papermill==2.2.2
+ficd 
+
+sudo /opt/conda/bin/pip install -U papermill>=2.2.2
+sudo /opt/conda/bin/pip install pandasql
+sudo /opt/conda/bin/pip install curl 
+
+echo "/opt/conda/etc/profile.d/conda.s">> ~/.bashrc
 conda create --name environment
 conda activate environment
-
-if [[ ! -z $(command -v conda) ]]; then
-  source /opt/anaconda3/bin/activate base
-  sudo /opt/anaconda3/bin/pip install -U papermill==2.2.2
-fi
-
-pip install -U papermill>=2.2.2
-pip install pandasql
-pip install curl 
-
 
 readonly INPUT_NOTEBOOK_GCS_FILE=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/input_notebook -H "Metadata-Flavor: Google")
 readonly OUTPUT_NOTEBOOK_GCS_FOLDER=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/output_notebook -H "Metadata-Flavor: Google")
