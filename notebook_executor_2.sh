@@ -11,7 +11,7 @@ fi
 if [[ ! -z $(command -v conda) ]]; then
   source /opt/conda/bin/activate base
   sudo /opt/conda/bin/pip install -U papermill==2.2.2
-ficd 
+fi
 
 sudo /opt/conda/bin/pip install -U papermill>=2.2.2
 sudo /opt/conda/bin/pip install pandasql
