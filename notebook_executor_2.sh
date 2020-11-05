@@ -18,7 +18,7 @@ sudo /opt/conda/bin/pip install pandasql
 sudo /opt/conda/bin/pip install curl 
 
 echo "/opt/conda/etc/profile.d/conda.s">> ~/.bashrc
-conda create --name environment
+yes | conda create --name environment
 conda activate environment
 
 readonly INPUT_NOTEBOOK_GCS_FILE=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/input_notebook -H "Metadata-Flavor: Google")
