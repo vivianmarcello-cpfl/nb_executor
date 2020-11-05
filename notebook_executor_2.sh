@@ -11,8 +11,8 @@ fi
 /opt/conda/bin/conda init
 
 echo "/opt/conda/etc/profile.d/conda.sh">> ~/.bashrc
-yes | conda create --name environment2 python=3.6
-conda activate environment
+yes | /opt/conda/bin/conda create --name environment2 python=3.6
+/opt/conda/bin/conda activate environment
 
 pip install -U papermill>=2.2.2
 pip install pandasql
