@@ -11,7 +11,7 @@ fi
 /opt/conda/bin/conda init
 
 echo "/opt/conda/etc/profile.d/conda.sh">> ~/.bashrc
-yes | /opt/conda/bin/conda create --name environment2 python=3.6
+yes | /opt/conda/bin/conda create --name environment python=3.6
 /opt/conda/bin/conda activate environment
 
 pip install -U papermill>=2.2.2
@@ -34,7 +34,7 @@ readonly LEGACY_NOTEBOOK_PATH="${TEMPORARY_NOTEBOOK_FOLDER}/notebook.ipynb"
 PAPERMILL_EXIT_CODE=0
 if [[ -z "${PARAMETERS_GCS_FILE}" ]]; then
   echo "No input parameters present"
-  papermill ${INPUT_NOTEBOOK_GCS_FILE} ${TEMPORARY_NOTEBOOK_PATH} --log-output || PAPERMILL_EXIT_CODE=1
+  /opt/conda/bin/papermill ${INPUT_NOTEBOOK_GCS_FILE} ${TEMPORARY_NOTEBOOK_PATH} --log-output || PAPERMILL_EXIT_CODE=1
   PAPERMILL_RESULTS=$?
 else
   echo "input parameters present"
