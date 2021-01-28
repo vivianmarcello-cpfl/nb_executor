@@ -17,6 +17,8 @@ yes | /opt/conda/bin/conda create --name environment python=3.7
 pip install -U papermill>=2.2.2
 pip install pandasql
 pip install curl
+pip install openpyxl==2.6.4
+pip install xlrd==1.2.0
 pip3 install openpyxl==2.6.4
 pip3 install xlrd==1.2.0
 
