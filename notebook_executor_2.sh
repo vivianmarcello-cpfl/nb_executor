@@ -11,7 +11,7 @@ fi
 /opt/conda/bin/conda init
 
 echo "/opt/conda/etc/profile.d/conda.sh">> ~/.bashrc
-yes | /opt/conda/bin/conda create --name environment python=3.6
+yes | /opt/conda/bin/conda create --name environment python=3.7
 /opt/conda/bin/conda activate environment
 
 pip install -U papermill>=2.2.2
