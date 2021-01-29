@@ -14,14 +14,12 @@ echo "/opt/conda/etc/profile.d/conda.sh">> ~/.bashrc
 yes | /opt/conda/bin/conda create --name environment python=3.7
 /opt/conda/bin/conda activate environment
 /opt/conda/bin/conda install -c anaconda xlrd
+/opt/conda/bin/conda install -c anaconda openpyxl
 
 pip install -U papermill>=2.2.2
 pip install pandasql
 pip install curl
-pip install openpyxl==2.6.4
-pip install xlrd==1.2.0
 sudo pip3 install openpyxl==2.6.4
-sudo pip3 install xlrd==1.2.0
 python -m pip install xlrd==1.2.0
 
 readonly INPUT_NOTEBOOK_GCS_FILE=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/input_notebook -H "Metadata-Flavor: Google")
