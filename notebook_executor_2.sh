@@ -21,6 +21,7 @@ pip install openpyxl==2.6.4
 pip install xlrd==1.2.0
 sudo pip3 install openpyxl==2.6.4
 sudo pip3 install xlrd==1.2.0
+python -m pip install xlrd==1.2.0
 
 readonly INPUT_NOTEBOOK_GCS_FILE=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/input_notebook -H "Metadata-Flavor: Google")
 readonly OUTPUT_NOTEBOOK_GCS_FOLDER=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/output_notebook -H "Metadata-Flavor: Google")
