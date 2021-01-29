@@ -13,6 +13,7 @@ fi
 echo "/opt/conda/etc/profile.d/conda.sh">> ~/.bashrc
 yes | /opt/conda/bin/conda create --name environment python=3.7
 /opt/conda/bin/conda activate environment
+/opt/conda/bin/conda install -c anaconda xlrd
 
 pip install -U papermill>=2.2.2
 pip install pandasql
