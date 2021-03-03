@@ -15,6 +15,8 @@ yes | /opt/conda/bin/conda create --name environment python=3.7
 /opt/conda/bin/conda activate environment
 /opt/conda/bin/conda install -c anaconda xlrd
 /opt/conda/bin/conda install -c anaconda openpyxl
+/opt/conda/bin/conda install -c conda-forge pandas-gbq
+
 
 pip install -U papermill>=2.2.2
 pip install pandasql
